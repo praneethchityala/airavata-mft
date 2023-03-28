@@ -15,13 +15,48 @@
 # limitations under the License.
 #
 
-server.port=8088
-grpc.port=7004
-consul.host=localhost
-consul.port=8500
-api.id=0
+spring:
+  main:
+    web-application-type: NONE
 
-resource.service.host=localhost
-resource.service.port=7002
-secret.service.host=localhost
-secret.service.port=7003
+agent:
+  id: agent0
+  secret: CHANGE_ME
+  host: localhost
+  advertised:
+    host: localhost
+    url: http://localhost:3333
+  user: dimuthu
+  http:
+    port: 3333
+  https:
+    enabled: false
+  supported:
+    protocols: SCP,LOCAL,FTP
+  temp:
+    data:
+      dir: /tmp
+  concurrent:
+    transfers: 8
+    chunked:
+      threads: 20
+  chunk:
+    size: 10
+    streaming:
+      enabled: true
+  transport:
+    directory: plugins
+
+consul:
+  host: localhost
+  port: 8500
+
+resource:
+  service:
+    host: localhost
+    port: 7002
+
+secret:
+  service:
+    host: localhost
+    port: 7003

@@ -19,14 +19,19 @@ package org.apache.airavata.mft.resource.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"org.apache.airavata"})
-@PropertySource(value = "classpath:resource-service-application.properties")
+//@PropertySource(value = "classpath:resource-service-application.properties")
+@EnableConfigurationProperties
+@ConfigurationProperties()
 public class ResourceServiceApplication {
     public static void main(String[] args) {
+        System.setProperty("spring.config.name", "resource-service-application");
         SpringApplication.run(ResourceServiceApplication.class, args);
     }
 }

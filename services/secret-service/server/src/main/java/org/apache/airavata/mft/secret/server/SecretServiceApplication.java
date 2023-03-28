@@ -20,15 +20,20 @@ package org.apache.airavata.mft.secret.server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"org.apache.airavata", "org.apache.airavata.mft.secret.server.backend.sql.repository"})
 @EntityScan(basePackages = {"org.apache.airavata.mft.secret.server.backend.sql.entity"})
-@PropertySource(value = "classpath:secret-service-application.properties")
+//@PropertySource(value = "classpath:secret-service-application.properties")
+@EnableConfigurationProperties
+@ConfigurationProperties()
 public class SecretServiceApplication {
     public static void main(String[] args) {
+        System.setProperty("spring.config.name", "secret-service-application");
         SpringApplication.run(SecretServiceApplication.class, args);
     }
 }

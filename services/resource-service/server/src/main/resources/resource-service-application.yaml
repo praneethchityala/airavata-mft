@@ -14,21 +14,38 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-spring.datasource.url=jdbc:h2:~/mft_resourcedb;DB_CLOSE_ON_EXIT=FALSE
-
-server.port=8089
-grpc.port=7002
-grpc.enableReflection=true
 
 # Configurations for Airavata Backend
-airavata.backend.registry.server.host=localhost
-airavata.backend.registry.server.port=8970
+airavata:
+  backend:
+    registry:
+      server:
+        host: 149.165.170.103
+        port: 8970
+
+datalake:
+    custos:
+      client:
+        id: custos-whedmgamitu357p4wuke-10002708
+        secret: mrMdl86Ia1H94cikW7CvHoh7L0ASNXQVt2aRzSIj
+    drms:
+      host: localhost
+      port: 7070
 
 # Configurations for File Backend
-file.backend.resource.file=resources.json
-file.backend.storage.file=storages.json
+file:
+    resource:
+      file: resources.json
+    storage:
+      file: storages.json
 
-datalake.backend.drms.host=localhost
-datalake.backend.drms.port=7070
-datalake.backend.custos.client.id=CHANGEME
-datalake.backend.custos.client.secret=CHANGEME
+grpc:
+  enableReflection: true
+  port: 7002
+
+server:
+  port: 8089
+
+spring:
+  datasource:
+    url: jdbc:h2:~/mft_resourcedb;DB_CLOSE_ON_EXIT=FALSE

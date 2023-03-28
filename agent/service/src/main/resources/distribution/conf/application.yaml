@@ -14,12 +14,46 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+ 
 
-spring.datasource.url=jdbc:h2:~/mft_secretdb;DB_CLOSE_ON_EXIT=FALSE
+agent:
+  advertised:
+    url: http://localhost
+  chunk:
+    size: 10
+    streaming:
+      enabled: true
+  concurrent:
+    chunked:
+      threads: 20
+    transfers: 8
+  host: localhost
+  http:
+    port: 3333
+  https:
+    enabled: false
+  id: agent0
+  secret: CHANGE_ME
+  supported:
+    protocols: SCP,LOCAL,FTP
+  temp:
+    data:
+      dir: /tmp
+  user: dimuthu
 
-server.port=8081
-grpc.port=7003
+consul:
+  host: localhost
+  port: 8500
 
-# Configurations for file Backend
-file.backend.secret.file=secrets.json
+resource:
+  service:
+    host: localhost
+    port: 7002
 
+secret:
+    host: localhost
+    port: 7003
+
+spring:
+  main:
+    web-application-type: NONE

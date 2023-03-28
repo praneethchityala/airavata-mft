@@ -15,27 +15,35 @@
 # limitations under the License.
 #
 
-spring.main.web-application-type=NONE
-agent.id=agent0
-agent.secret=CHANGE_ME
-agent.host=localhost
-agent.advertised.host=localhost
-agent.user=dimuthu
-agent.http.port=3333
-agent.https.enabled=false
-agent.supported.protocols=SCP,LOCAL,FTP
-agent.temp.data.dir=/tmp
+# Configurations for Airavata Backend
+airavata:
+  backend:
+    registry:
+      server:
+        host: localhost
+        port: 8970
 
-consul.host=localhost
-consul.port=8500
+datalake:
+    custos:
+      client:
+        id: CHANGEME
+        secret: CHANGEME
+    drms:
+      host: localhost
+      port: 7070
 
-resource.service.host=localhost
-resource.service.port=7002
-secret.service.host=localhost
-secret.service.port=7003
-agent.advertised.url=http://localhost:3333
-agent.concurrent.transfers=8
-agent.concurrent.chunked.threads=20
-agent.chunk.size=10
-agent.chunk.streaming.enabled=true
-agent.transport.directory=plugins
+# Configurations for File Backend
+file:
+    resource:
+      file: resources.json
+    storage: storages.json
+
+grpc:
+  enableReflection: true
+  port: 7002
+
+server: 8089
+
+spring:
+  datasource:
+    url: jdbc:h2:~/mft_resourcedb;DB_CLOSE_ON_EXIT=FALSE

@@ -33,6 +33,15 @@
     <artifactId>mft-resource-service</artifactId>
     <packaging>pom</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>3.0.5</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
     <modules>
         <module>stub</module>
         <module>server</module>

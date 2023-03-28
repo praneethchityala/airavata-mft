@@ -14,10 +14,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-spring.datasource.url=jdbc:h2:~/mft_secretdb;DB_CLOSE_ON_EXIT=FALSE
+ 
 
-server.port=8081
-grpc.port=7003
+api:
+  id: 0
 
-# Configurations for file Backend
-file.backend.secret.file=secrets.json
+consul:
+  host: localhost
+  port: 8500
+
+grpc:
+  port: 7004
+
+resource:
+  service:
+    host: localhost
+    port: 7002
+
+secret:
+  service:
+    host: localhost
+    port: 7003
+
+server:
+  port: 8088

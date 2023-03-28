@@ -14,26 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+ 
 
-spring.main.web-application-type=NONE
-agent.id=agent0
-agent.secret=CHANGE_ME
-agent.host=localhost
-agent.advertised.url=http://localhost
-agent.user=dimuthu
-agent.http.port=3333
-agent.https.enabled=false
-agent.supported.protocols=SCP,LOCAL,FTP
-agent.temp.data.dir=/tmp
-
-consul.host=localhost
-consul.port=8500
-
-resource.service.host=localhost
-resource.service.port=7002
-secret.service.host=localhost
-secret.service.port=7003
-agent.concurrent.transfers=8
-agent.concurrent.chunked.threads=20
-agent.chunk.size=10
-agent.chunk.streaming.enabled=true
+consul:
+  host: localhost
+  port: 8500

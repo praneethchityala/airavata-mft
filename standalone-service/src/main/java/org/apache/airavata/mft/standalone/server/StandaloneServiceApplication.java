@@ -19,6 +19,8 @@ package org.apache.airavata.mft.standalone.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
@@ -30,6 +32,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = {"org.apache.airavata.mft.resource.server.backend.sql.repository",
 		"org.apache.airavata.mft.secret.server.backend.sql.repository"})
 @Import(org.apache.airavata.mft.api.AppConfig.class)
+@EnableConfigurationProperties
+@ConfigurationProperties()
 public class StandaloneServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StandaloneServiceApplication.class, args);

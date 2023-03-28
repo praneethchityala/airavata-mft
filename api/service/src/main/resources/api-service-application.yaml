@@ -14,14 +14,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+ 
 
-server.port=8088
-grpc.port=7004
-consul.host=localhost
-consul.port=8500
-api.id=0
+api:
+  id: 0
 
-resource.service.host=localhost
-resource.service.port=7002
-secret.service.host=localhost
-secret.service.port=7003
+consul:
+  host: localhost
+  port: 8500
+
+grpc:
+  port: 7004
+
+resource:
+  service:
+    host: localhost
+    port: 7002
+
+secret:
+  service:
+    host: localhost
+    port: 7003
+
+server:
+  port: 8088

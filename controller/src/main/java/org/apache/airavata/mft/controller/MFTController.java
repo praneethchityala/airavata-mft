@@ -34,6 +34,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 
 import javax.annotation.PreDestroy;
@@ -49,7 +51,9 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication()
 @ComponentScan(basePackages = {"org.apache.airavata.mft"})
 @EntityScan("org.apache.airavata.mft.api.db.entities")
-@PropertySource(value = "classpath:controller-application.properties")
+//@PropertySource(value = "classpath:controller-application.properties")
+@EnableConfigurationProperties
+@ConfigurationProperties()
 public class MFTController implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(MFTController.class);
@@ -330,6 +334,7 @@ public class MFTController implements CommandLineRunner {
     }
 
     public static void main(String args[]) {
+        System.setProperty("spring.config.name", "controller-application");
         SpringApplication.run(MFTController.class);
     }
 }

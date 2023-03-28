@@ -14,16 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+ 
 
-spring.main.allow-bean-definition-overriding=true
-spring.datasource.url=jdbc:h2:~/mft_db;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
-spring.jpa.hibernate.ddl-auto=update
+consul:
+  host: localhost
+  port: 8500
 
-consul.host=localhost
-consul.port=8500
-resource.service.host=localhost
-resource.service.port=7003
-secret.service.host=localhost
-secret.service.port=7003
-agent.id=local-agent
-agent.transport.directory=${AIRAVATA_HOME}/plugins
+resource:
+  service:
+    host: localhost
+    port: 7002
+
+secret:
+  service:
+    host: localhost
+    port: 7003

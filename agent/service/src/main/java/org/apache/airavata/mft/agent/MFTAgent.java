@@ -21,6 +21,7 @@ import org.apache.airavata.mft.admin.models.TransferState;
 import org.apache.airavata.mft.api.service.CallbackEndpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,16 +29,24 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.concurrent.*;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication()
-@PropertySource(value = "classpath:agent-application.properties")
+@EnableConfigurationProperties
+@ConfigurationProperties()
+//@PropertySource(value = "classpath:agent-application.properties")
 public class MFTAgent implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(MFTAgent.class);
 
     @org.springframework.beans.factory.annotation.Value("${agent.id}")
     private String agentId;
+
+    @Value("${agent.id}")
+    private String agentId2;
 
     @org.springframework.beans.factory.annotation.Value("${agent.host}")
     private String agentHost;
@@ -86,6 +95,7 @@ public class MFTAgent implements CommandLineRunner {
     }
 
     public static void main(String args[]) throws Exception {
+        System.setProperty("spring.config.name", "agent-application");
         SpringApplication.run(MFTAgent.class);
     }
 }
